@@ -24,6 +24,7 @@ if [ $# -eq 0 ]
     # running from GitHub build server...
     # get the file path to SSH private key file from command line argument
     $SSHIDFILEPATH=$1
+    echo "IDENTIFY FILE: $SSHIDFILEPATH"
 
     # upload files to server using this SSH private key file
     rsync -avz -e 'ssh -i $SSHIDFILEPATH $NETID@$HOSTNAME:$DESTINATIONDIR StrictHostKeyChecking=no' ./* $NETID@$HOSTNAME:$DESTINATIONDIR
