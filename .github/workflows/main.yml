@@ -28,4 +28,4 @@ jobs:
           touch $HOME/id_rsa
           echo "${{secrets.DEPLOY_KEY}}" > $HOME/id_rsa
           chmod 600 $HOME/id_rsa
-          ./deploy/deploy.sh "$HOME/id_rsa" && echo "done!"
+          ./deploy/deploy.sh $HOME/id_rsa && echo "done!"
