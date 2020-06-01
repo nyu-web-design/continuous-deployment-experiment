@@ -12,7 +12,7 @@ HOSTNAME=$(python3 $DIR/bash_brains.py hostname)
 echo "HOSTNAME: $HOSTNAME"
 
 # server directory in which to upload
-DESTINATIONDIR==$(python3 $DIR/bash_brains.py destination_dir)
+DESTINATIONDIR=$(python3 $DIR/bash_brains.py destination_dir)
 echo "DESTINATION DIR: $DESTINATIONDIR"
 
 if [ $# -eq 0 ]
@@ -23,10 +23,10 @@ if [ $# -eq 0 ]
   else
     # running from GitHub build server...
     # get the file path to SSH private key file from command line argument
-    $SSHIDFILEPATH=$1
-    echo "IDENTIFY FILE: $SSHIDFILEPATH"
+    IDPATH=$1
+    echo "IDENTITY FILE PATH: $IDPATH"
 
     # upload files to server using this SSH private key file
-    rsync -avz -e 'ssh -i $SSHIDFILEPATH $NETID@$HOSTNAME:$DESTINATIONDIR StrictHostKeyChecking=no' ./* $NETID@$HOSTNAME:$DESTINATIONDIR
+    rsync -avz -e 'ssh -i $IDPATH $NETID@$HOSTNAME:$DESTINATIONDIR StrictHostKeyChecking=no' ./* $NETID@$HOSTNAME:$DESTINATIONDIR
 fi
 
