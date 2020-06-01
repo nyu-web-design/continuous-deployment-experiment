@@ -1,5 +1,6 @@
 {
   "name": "Foo Barstein",
   "nyu_net_id": "ab1258",
-  "site_url": "http://i6.cims.nyu.edu/~ab1258/automation_example"
+  "site_url": "http://i6.cims.nyu.edu/~ab1258/automation_example",
+  "destination_dir": "~/public_html/continuous-deployment"
 }

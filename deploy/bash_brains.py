@@ -21,7 +21,7 @@ def get_setting(setting):
 
 def get_server():
   """
-  Extract the server name from a site URL
+  Extract the hostname from a site URL
   """
   from urllib.parse import urlparse
   site_url = get_setting('site_url')

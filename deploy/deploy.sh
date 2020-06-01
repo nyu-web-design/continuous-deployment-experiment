@@ -11,7 +11,8 @@ HOSTNAME=$(python3 $DIR/bash_brains.py hostname)
 echo "HOSTNAME: $HOSTNAME"
 
 # server directory in which to upload
-TARGETDIR="~/public_html/continuous-deployment"
+DESTINATIONDIR==$(python3 $DIR/bash_brains.py destination_dir)
+echo "DESTINATION DIR: $DESTINATIONDIR"
 
 # upload files to server
-rsync -avz ./* $NETID@$HOSTNAME:$TARGETDIR
+rsync -avz ./* $NETID@$HOSTNAME:$DESTINATIONDIR
