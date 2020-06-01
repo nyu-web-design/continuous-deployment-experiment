@@ -15,19 +15,5 @@ echo "HOSTNAME: $HOSTNAME"
 DESTINATIONDIR=$(python3 $DIR/bash_brains.py destination_dir)
 echo "DESTINATION DIR: $DESTINATIONDIR"
 
-if [ $# -eq 0 ]
-  then
-    # running from local machine...
-    # upload files to server using local machine's default SSH keys
-    rsync -avz ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR 
-  else
-    # running from GitHub build server...
-    # get the file path to SSH private key file from command line argument
-    IDPATH=$1
-    echo "IDENTITY FILE PATH: $IDPATH"
-
-    # upload files to server using this SSH private key file
-    # rsync -avz -e "ssh -i $IDPATH -o StrictHostKeyChecking=no" ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR
-    rsync -avz ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR
-fi
-
+# upload files to server using local machine's default SSH keys
+rsync -avz ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR 
