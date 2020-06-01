@@ -27,5 +27,6 @@ jobs:
         run: |
           mkdir -p $HOME/.ssh
           echo "${{secrets.DEPLOY_KEY}}" > $HOME/.ssh/id_rsa
+          ssh-add $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
           ./deploy/deploy.sh $HOME/.ssh/id_rsa && echo "done!"
