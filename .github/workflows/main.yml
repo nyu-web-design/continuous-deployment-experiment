@@ -26,6 +26,7 @@ jobs:
       - name: Run deploy bash script
         run: |
           mkdir -p $HOME/.ssh
+          eval `ssh-agent -s`
           echo "${{secrets.DEPLOY_KEY}}" > $HOME/.ssh/id_rsa
           ssh-add $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
