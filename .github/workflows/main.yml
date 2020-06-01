@@ -25,5 +25,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run deploy bash script
         run: |
-          cat ${{secrets.DEPLOY_KEY}} > ./.ssh/id_rsa
+          DEPLOYKEY=${{secrets.DEPLOY_KEY}}
           ./deploy/deploy.sh ./.ssh/id_rsa && echo "done!"
