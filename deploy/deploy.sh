@@ -27,6 +27,6 @@ if [ $# -eq 0 ]
     echo "IDENTITY FILE PATH: $IDPATH"
 
     # upload files to server using this SSH private key file
-    rsync -avz -e 'ssh -i $IDPATH $NETID@$HOSTNAME:$DESTINATIONDIR StrictHostKeyChecking=no' ./* $NETID@$HOSTNAME:$DESTINATIONDIR
+    rsync -avz -e "ssh -i $IDPATH $NETID@$HOSTNAME StrictHostKeyChecking=no" ./* $NETID@$HOSTNAME:$DESTINATIONDIR
 fi
 
