@@ -4,7 +4,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # get settings
-NETID=$(python3 $DIR/bash_brains.py nyu_net_id)
+USERNAME=$(python3 $DIR/bash_brains.py nyu_net_id)
 echo "NET ID: $NETID"
 
 # get server name
@@ -19,7 +19,7 @@ if [ $# -eq 0 ]
   then
     # running from local machine...
     # upload files to server using local machine's default SSH keys
-    rsync -avz ./* $NETID@$HOSTNAME:$DESTINATIONDIR 
+    rsync -avz ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR 
   else
     # running from GitHub build server...
     # get the file path to SSH private key file from command line argument
@@ -27,6 +27,6 @@ if [ $# -eq 0 ]
     echo "IDENTITY FILE PATH: $IDPATH"
 
     # upload files to server using this SSH private key file
-    rsync -avz -e "ssh -i $IDPATH $NETID@$HOSTNAME StrictHostKeyChecking=no" ./* $NETID@$HOSTNAME:$DESTINATIONDIR
+    rsync -avz -e "ssh -i $IDPATH -o StrictHostKeyChecking=no" ./* $USERNAME@$HOSTNAME:$DESTINATIONDIR
 fi
 

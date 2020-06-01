@@ -25,7 +25,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run deploy bash script
         run: |
-          touch $HOME/id_rsa
-          echo "${{secrets.DEPLOY_KEY}}" > $HOME/id_rsa
-          chmod 600 $HOME/id_rsa
-          ./deploy/deploy.sh $HOME/id_rsa && echo "done!"
+          mkdir -p $HOME/.ssh
+          echo "${{secrets.DEPLOY_KEY}}" > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
+          ./deploy/deploy.sh $HOME/.ssh/id_rsa && echo "done!"
