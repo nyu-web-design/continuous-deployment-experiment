@@ -16,8 +16,8 @@ The following settings are necessary:
 
 1. The remote hostname, username, and other information must be accurately documented in the file named `settings.json`.
 1. The local development machine must have an SSH key pair. Run the command, `cat ~/.ssh/id_rsa.pub` - if you see something, you already have a key pair. If not, generate one by run the command, `ssh-keygen -f ~/.ssh/id_rsa -q -P ""` - this will create a private and a public key. The private key will be in the file `~/.ssh/id_rsa` - keep this private! The public key will be in the file`~/.ssh/id_rsa.pub` - feel free to share this.
-1. Copy the public key to the server. Use the command `ssh-copy-id fb1258@i6.cims.nyu.edu` - replace `fb1258` with your username and `i6.cims.nyu.edu` as your server's hostname. If this doesn't work, run the command, `cat ~/.ssh/id_rsa.pub | ssh fb1258@i6.cims.nyu.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"`, where your username and hostname are plugged in place of `fb1258` and `i6.cims.nyu.edu`.
-1. in the GitHub repository's `Settings` tab, click on `Secrets` and create a new secret with the name `DEPLOY_KEY` and paste your local computer's public SSH key as the value.
+1. Copy the _public_ key to the server. Use the command `ssh-copy-id fb1258@i6.cims.nyu.edu` - replace `fb1258` with your username and `i6.cims.nyu.edu` as your server's hostname. If this doesn't work, run the command, `cat ~/.ssh/id_rsa.pub | ssh fb1258@i6.cims.nyu.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"`, where your username and hostname are plugged in place of `fb1258` and `i6.cims.nyu.edu`.
+1. in the GitHub repository's `Settings` tab, click on `Secrets` and create a new secret with the name `DEPLOY_KEY` and paste your local computer's _private_ SSH key as the value. View your computer's private key with the command `cat ~/.ssh/id_rsa`.
 
 ## Automated testing
 
