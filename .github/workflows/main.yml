@@ -28,7 +28,7 @@ jobs:
           mkdir -p $HOME/.ssh
           eval `ssh-agent -s`
           echo "${{secrets.DEPLOY_KEY}}" > $HOME/.ssh/id_rsa
-          ssh-add $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
+          ssh-add $HOME/.ssh/id_rsa
           ssh-keyscan -H ${{secrets.HOSTNAME}} >> $HOME/.ssh/known_hosts
           ./deploy/deploy.sh $HOME/.ssh/id_rsa && echo "done!"
